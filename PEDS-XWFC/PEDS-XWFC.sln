@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEDS-XWFC", "PEDS-XWFC\PEDS-XWFC.csproj", "{5C165442-4850-449C-8654-833AC2B6C6F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEDS-XWFC.Tests", "PEDS-XWFC.Tests\PEDS-XWFC.Tests.csproj", "{C3F795A0-76EB-40FF-AB9D-ADDD264A7795}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C165442-4850-449C-8654-833AC2B6C6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C165442-4850-449C-8654-833AC2B6C6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C165442-4850-449C-8654-833AC2B6C6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C165442-4850-449C-8654-833AC2B6C6F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F795A0-76EB-40FF-AB9D-ADDD264A7795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F795A0-76EB-40FF-AB9D-ADDD264A7795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F795A0-76EB-40FF-AB9D-ADDD264A7795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F795A0-76EB-40FF-AB9D-ADDD264A7795}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC4940D8-AFCC-4122-BF9C-D232A74F90EB}
+	EndGlobalSection
+EndGlobal
