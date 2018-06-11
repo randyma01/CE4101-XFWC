@@ -60,7 +60,7 @@ FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 CREATE TABLE Administrador(
 IdAdmin INT NOT NULL AUTO_INCREMENT,
 IdUsuario INT NOT NULL,
-PRIMARY KEY (IdAmin),
+PRIMARY KEY (IdAdmin),
 FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
 
