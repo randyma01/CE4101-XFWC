@@ -1,10 +1,9 @@
-﻿@model PEDS_XWFC.Models.NewUser     
+﻿@model PEDS_XWFC.Models.NewUser
 @{
-    Layout = null;
+    Layout = "~/Views/_Layout.cshtml";
 
     ViewBag.Title = "Sign Up";
 }
-
 
 <h2> @PEDS_XWFC.Properties.Resources.CreateAccount</h2>
 
@@ -13,7 +12,7 @@
         @Html.Label(PEDS_XWFC.Properties.Resources.FirstName)
         @Html.TextBoxFor(m => m.GetUser.FirstName, new { @class = "form-control" })
     </div>
-    
+
     <div class="form-group">
         @Html.Label(PEDS_XWFC.Properties.Resources.LastName)
         @Html.TextBoxFor(m => m.GetUser.LastName, new { @class = "form-control" })
@@ -35,9 +34,28 @@
     </div>
 
     <div class="form-group">
-        @Html.Label(PEDS_XWFC.Properties.Resources.TelephoneNumber)
+        @Html.Label(PEDS_XWFC.Properties.Resources.TelephoneNumber + " (*)")
         @Html.TextBoxFor(m => m.GetUserFanatic.TelephoneNumber, new { @class = "form-control" })
     </div>
 
+    <div class="form-group">
+        @Html.Label(PEDS_XWFC.Properties.Resources.Photo + " (*)")
+        @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file" id="file" style="width: 100%;" />
+            <img src=null />
+            <button type="submit">
+                
+                <span class="glyphicon glyphicon-upload"></span>
+            </button>
+        }
+    </div>
+
+
+    <div class="form-group">
+        @Html.Label(PEDS_XWFC.Properties.Resources.BirthDate + " (*)")
+        @Html.TextBoxFor(m => m.GetUserFanatic.BirthDate, new { type = "date" })
+    </div>
 
 </form>
