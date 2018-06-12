@@ -14,6 +14,7 @@ namespace PEDS_XWFC.Models
         public String TelephoneNumber { get; set; }
         public String Photo { get; set; }
         public DateTime BirthDate { get; set; }
+        public String PersonalDescription { get; set; }
 
 
     }

@@ -31,7 +31,7 @@ USE WorldCupBD;
 
 CREATE TABLE Pais(
 IdPais INT NOT NULL AUTO_INCREMENT, 
-NombrePais VARCHAR(15),
+NombrePais TEXT,
 PRIMARY KEY (IdPais)
 );
 
@@ -187,5 +187,9 @@ FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
 FOREIGN KEY(IdEquipoIdeal) REFERENCES EquipoIdeal(IdEquipoIdeal)
 );
 
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/listCountries.txt'
+INTO TABLE worldcupbd.pais
+FIELDS TERMINATED BY '\n' (NombrePais);
 
  
