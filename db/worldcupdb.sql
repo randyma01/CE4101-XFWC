@@ -11,13 +11,6 @@ Miembros:
 	Gustavo Fallas Carrera - 2014035394
 	Randy Martínez Sandí - 2014047395
 	Ricardo Chang Villalobos - 2014040801
-
-Índice:
-	1- Creacion de tablas.
-    2- Declaracion de SPs
-    3- Declaracion de SFs
-    4- LLenado de tablas por medio de los SPs
-    5- Pruebas de SPs y SFs (CRUD)
 */
 
 #----------Creando bases de datos llamada: WorldCupBD----------#
@@ -47,11 +40,12 @@ PRIMARY KEY(IdUsuario)
 
 CREATE TABLE Fanatico (
 IdFanatico INT NOT NULL AUTO_INCREMENT,
-Saldo INT,
 Telefono VARCHAR (10),
 Puntos INT,
 IdPais INT NOT NULL,
 IdUsuario INT NOT NULL,
+Descripcion TEXT,
+Foto BLOB,
 PRIMARY KEY(IdFanatico),
 FOREIGN KEY (IdPais) REFERENCES Pais(IdPais),
 FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
@@ -61,6 +55,11 @@ CREATE TABLE Administrador(
 IdAdmin INT NOT NULL AUTO_INCREMENT,
 IdUsuario INT NOT NULL,
 PRIMARY KEY (IdAdmin),
+FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+);
+
+CREATE TABLE Usuario_Desactivado(
+IdUsuario INT NOT NULL,
 FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
 
@@ -118,11 +117,13 @@ PRIMARY KEY(IdSeleccion),
 FOREIGN KEY (IdPais) REFERENCES Pais(IdPais)
 );
 
-CREATE TABLE Futbolista_Seleccion(
+CREATE TABLE Futbolista_Seleccion_Torneo(
 IdSeleccion INT NOT NULL,
 IdFutbolista INT NOT NULL,
+IdTorneo INT NOT NULL,
 FOREIGN KEY(IdSeleccion) REFERENCES Seleccion(IdSeleccion),
-FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista)
+FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
 
@@ -176,6 +177,15 @@ IdEquipoIdeal INT NOT NULL AUTO_INCREMENT,
 IdFanatico INT NOT NULL, 
 IdTorneo INT NOT NULL,
 PRIMARY KEY (IdEquipoIdeal),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
+);
+
+CREATE TABLE ModoCampeonato(
+IdModoCampeonato INT NOT NULL AUTO_INCREMENT,
+IdFanatico INT NOT NULL,
+IdTorneo INT NOT NULL,
+PRIMARY KEY(IdModoCampeonato),
 FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );

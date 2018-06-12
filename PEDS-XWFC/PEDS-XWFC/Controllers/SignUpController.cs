@@ -7,11 +7,14 @@ using System.Web.Mvc;
 using MySql.Data.MySqlClient;
 using System.Data;
 using PEDS_XWFC.Models;
+using System.Diagnostics;
 
 namespace PEDS_XWFC.Controllers
 {
     public class SignUpController : Controller
     {
+
+        NewUser model = new NewUser();
         // GET: SignUp
         public ActionResult SignUp()
         {
@@ -30,7 +33,6 @@ namespace PEDS_XWFC.Controllers
 
             dataView = dataSet.Tables[0].DefaultView;
 
-            var model = new NewUser();
             model.ListCountries = new List<SelectListItem>();
 
             foreach (DataRowView datarow in dataView)
@@ -66,6 +68,14 @@ namespace PEDS_XWFC.Controllers
             }
             // after successfully uploading redirect the user
             
+            return RedirectToAction("SignUp", "SignUp");
+        }
+
+        public ActionResult CreateAccount()
+        {
+            
+
+            Debug.WriteLine(model.Countries.ToString());
             return RedirectToAction("SignUp", "SignUp");
         }
     }
