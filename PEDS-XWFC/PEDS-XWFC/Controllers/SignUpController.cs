@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MySql.Data.MySqlClient;
 using System.Data;
 using PEDS_XWFC.Models;
 using System.Diagnostics;
@@ -15,24 +14,13 @@ namespace PEDS_XWFC.Controllers
     {
 
         NewUser model = new NewUser();
+        Connection connection = new Connection();
         // GET: SignUp
         public ActionResult SignUp()
         {
 
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; user id=root; database=worldcupbd; password=alonso; SslMode = none");
-
-            mySqlConnection.Open();
-
-
-            MySqlCommand sqlCommand = new MySqlCommand("SELECT * FROM Pais", mySqlConnection);
-            MySqlDataAdapter sqlDataAdapter = new MySqlDataAdapter(sqlCommand);
-
             DataView dataView;
-            DataSet dataSet = new DataSet();
-            sqlDataAdapter.Fill(dataSet);
-
-            dataView = dataSet.Tables[0].DefaultView;
-
+            dataView = connection.getData("SELECT * FROM Pais");
             model.ListCountries = new List<SelectListItem>();
 
             foreach (DataRowView datarow in dataView)
@@ -41,8 +29,6 @@ namespace PEDS_XWFC.Controllers
                 model.ListCountries.Add(newItem);
             }
 
-            sqlCommand.Dispose();
-            mySqlConnection.Close();
             return View(model);
         }
 
