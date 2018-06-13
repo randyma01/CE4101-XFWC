@@ -89,20 +89,30 @@ PRIMARY KEY(IdEstadisticas)
 
 CREATE TABLE Futbolista(
 IdFutbolista INT NOT NULL AUTO_INCREMENT, 
-Pasaporte INT,
-IdPais INT ,
-Posicion VARCHAR(30),
 NombreFutbolista VARCHAR(60),
+Posicion VARCHAR(30),
+Pasaporte INT,
 FechaNacimiento TIME,
-NombreEquipo VARCHAR(30),
 Altura  INT,
 Peso    INT,
+IdEquipo INT,
+IdSeleccion INT,
+IdEstadisticas INT NOT NULL, 
 Precio INT,
-Activo BOOL,
-IdEstadisticas INT, 
+Activo NULL,
 PRIMARY KEY(IdFutbolista),
 FOREIGN KEY(IdEstadisticas) REFERENCES Estadisticas(IdEstadisticas),
-FOREIGN KEY(IdPais) REFERENCES Pais(IdPais)
+FOREIGN KEY(IdSeleccion) REFERENCES Estadisticas(IdEstadisticas),
+FOREIGN KEY(IdEquipo) REFERENCES Estadisticas(IdEstadisticas)
+);
+
+
+CREATE TABLE Equipo(
+IdEquipo INT NOT NULL AUTO_INCREMENT, 
+NombreEquipo VARCHAR(30),
+IdPais INT NOT NULL, 
+PRIMARY KEY (IdEquipo),
+FOREIGN KEY (IdPais) REFERENCES Pais(IdPais)
 );
 
 
@@ -127,11 +137,13 @@ FOREIGN KEY(IdPatrocinador) REFERENCES Patrocinador(IdPatrocinador)
 );
 
 
-CREATE TABLE Futbolista_Seleccion(
+CREATE TABLE Futbolista_Seleccion_Torneo(
 IdSeleccion INT NOT NULL,
 IdFutbolista INT NOT NULL,
+IdTorneo INT NOT NULL,
 FOREIGN KEY(IdSeleccion) REFERENCES Seleccion(IdSeleccion),
-FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista)
+FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
 CREATE TABLE Seleccion_Torneo(
@@ -200,12 +212,12 @@ FIELDS TERMINATED BY '\n' (NombrePais);
  
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
-("Gustavo", "Fallas", "gustavo@gmail.com", "tav","1234"),
-("Randy", "Martinez", "randy@gmail.com", "ran","1235"),
-("Ricardo", "Chang", "ricardo@gmail.com", "ric","1236");
+("Gustavo", "Fallas", "gustavo@gmail.com", "tav",1234),
+("Randy", "Martinez", "randy@gmail.com", "ran",1234),
+("Ricardo", "Chang", "ricardo@gmail.com", "ric",1234);
 
-INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
+INSERT INTO Fanatico()
 VALUES
-("Root", "toor", "root@gmail.com", "root","root");
-
-
+(),
+(),
+();
