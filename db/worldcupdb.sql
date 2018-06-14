@@ -198,6 +198,8 @@ INTO TABLE worldcupbd.pais
 FIELDS TERMINATED BY '\n' (NombrePais);
 
  
+	
+ 
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Gustavo", "Fallas", "gustavo@gmail.com", "tav","1234"),
@@ -206,6 +208,5 @@ VALUES
 
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
-("Root", "toor", "root@gmail.com", "root","root");
-
+("Root1", "too1", "root11@gmail.com", "root1","root12",);
 
