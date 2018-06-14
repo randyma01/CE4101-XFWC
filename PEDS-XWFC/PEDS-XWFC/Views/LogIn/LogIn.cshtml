@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/_Layout.cshtml";
+    Layout = "~/Views/Templates/_Layout.cshtml";
 }
 
 <h1>X-FIFA World Cup</h1>
@@ -14,7 +14,10 @@
         <input type="password" class="form-control" placeholder=@PEDS_XWFC.Properties.Resources.Password>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">@PEDS_XWFC.Properties.Resources.LogIn</button>
+        @using (Html.BeginForm("ButtonLogIn", "LogIn"))
+        {
+            <button type="submit" class="btn btn-primary">@PEDS_XWFC.Properties.Resources.LogIn</button>
+        }
         <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("SignUp", "SignUp")'">@PEDS_XWFC.Properties.Resources.SignUp</button>
     </div>
     

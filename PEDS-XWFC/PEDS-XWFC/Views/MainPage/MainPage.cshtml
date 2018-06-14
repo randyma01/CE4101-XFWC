@@ -1,11 +1,10 @@
-﻿@model PEDS_XWFC.Models.NewUser
-@{
-    Layout = "~/Views/_Layout.cshtml";
+﻿@{
+    Layout = "~/Views/Templates/_Layout.cshtml";
 
-    ViewBag.Title = "Sign Up";
+    ViewBag.Title = "Main Page";
 }
 
-<h2 class="container"> @PEDS_XWFC.Properties.Resources.CreateAccount</h2>
+<h1><strong>X-FIFA World Cup</strong></h1>
 
 
 <form class="container">
@@ -92,9 +91,5 @@
             <button type="submit">@PEDS_XWFC.Properties.Resources.CreateAccount</button>
         </div>
     </div>
-    @*
-        @using (Html.BeginForm("CreateAccount", "SignUp", FormMethod.Post))
-        {}
-    *@
 </form>
 

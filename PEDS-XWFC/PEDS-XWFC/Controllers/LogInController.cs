@@ -18,20 +18,13 @@ namespace PEDS_XWFC.Controllers
             return View();
         }
 
-        //public ActionResult ButtonLogIn()
-        //{
-        //    DataView dataView;
-        //    dataView = connection.getData("SELECT * FROM Pais");
-        //    //model.ListCountries = new List<SelectListItem>();
+       
+        public ActionResult ButtonLogIn()
+        {
+         
+            return View("Index", "MainPage");
 
-        //    foreach (DataRowView datarow in dataView)
-        //    {
-        //        var newItem = new SelectListItem { Text = datarow["NombrePais"].ToString(), Value = datarow["IdPais"].ToString() };
-        //        //model.ListCountries.Add(newItem);
-        //    }
-        //    return View();
-
-        //}
+        }
 
 
     }
