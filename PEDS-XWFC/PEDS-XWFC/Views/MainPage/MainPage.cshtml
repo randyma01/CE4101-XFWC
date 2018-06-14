@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Templates/_Layout.cshtml";
+    Layout = "~/Views/Templates/HomeLayout.cshtml";
 
     ViewBag.Title = "Main Page";
 }
@@ -8,88 +8,3 @@
 
 
 <form class="container">
-    @using (Html.BeginForm("CreateAccount", "SignUp", FormMethod.Post))
-    {
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.FirstName)                
-                @Html.TextBoxFor(m => m.GetUser.FirstName, new { @class = "form-control" })
-                <input type="submit" value="Send" />
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.LastName)
-                @Html.TextBoxFor(m => m.GetUser.LastName, new { @class = "form-control" })
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.UserName)
-                @Html.TextBoxFor(m => m.GetUser.UserName, new { @class = "form-control" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Email)
-                @Html.TextBoxFor(m => m.GetUser.Email, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Password)
-                @Html.PasswordFor(m => m.GetUser.Password, new { @class = "form-control" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Country)
-                @Html.DropDownListFor(m => m.Country, Model.ListCountries, htmlAttributes: new { @class = "form-control", id = "Country" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.PersonalDescription)
-
-                @Html.TextBoxFor(m => m.GetUserFanatic.PersonalDescription, new { @class = "form-control" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.TelephoneNumber)
-                @Html.TextBoxFor(m => m.GetUserFanatic.TelephoneNumber, new { @class = "form-control" })
-            </div>
-
-        </div>
-    }
-    <div class="row">
-        <div class="col-sm-3 col-md-6 col-lg-4">
-            @Html.Label(PEDS_XWFC.Properties.Resources.Photo + " (*)")
-            <div class="form-group">
-                @using (Html.BeginForm("FileUpload", "SignUp", FormMethod.Post,
-                    new { enctype = "multipart/form-data" }))
-                {<img id="profilePhoto" src="~/Content/Images/userDefault.png" width="150" height="150" />
-                    <label for="filePhoto-input">
-                        <span class="glyphicon glyphicon-cloud-upload" style="font-size:60px;"></span>
-                    </label>
-                    <input id="filePhoto-input" type="file" style="display:none" />
-                }
-            </div>
-        </div>
-
-
-        <div class="col-sm-3 col-md-6 col-lg-4">
-
-
-            @Html.Label(PEDS_XWFC.Properties.Resources.BirthDate + " (*)")
-            @Html.TextBoxFor(m => m.GetUserFanatic.BirthDate, new { type = "date" })
-            <span class="glyphicon glyphicon-calendar"></span>
-        </div>
-    </div>
-
-    <div class="row" style="text-align:center">
-        <div class="col-sm-3 col-md-6 col-lg-4">
-            <button type="submit">@PEDS_XWFC.Properties.Resources.CreateAccount</button>
-        </div>
-    </div>
-</form>
-
