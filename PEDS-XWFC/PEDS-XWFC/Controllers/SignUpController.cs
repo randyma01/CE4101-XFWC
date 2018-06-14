@@ -32,6 +32,7 @@ namespace PEDS_XWFC.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public ActionResult FileUpload(HttpPostedFileBase file)
         {
             if (file != null)
@@ -57,12 +58,21 @@ namespace PEDS_XWFC.Controllers
             return RedirectToAction("SignUp", "SignUp");
         }
 
-        public ActionResult CreateAccount()
+        [HttpPost]
+        public ActionResult CreateAccount(NewUser user)
         {
-            
-
-            Debug.WriteLine(model.Countries.ToString());
-            return RedirectToAction("SignUp", "SignUp");
+            List<string> values = new List<string>
+            {   //(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave) 
+                {user.GetUser.FirstName},
+                {user.GetUser.LastName},
+                {user.GetUser.Email},
+                {user.GetUser.UserName},
+                {user.GetUser.Password}
+            };
+            connection.insertData("Usuario", values);
+            return View();
         }
+
+       
     }
 }

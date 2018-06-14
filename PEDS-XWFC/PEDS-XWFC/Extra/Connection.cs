@@ -26,5 +26,28 @@ namespace PEDS_XWFC.Controllers
 
             return dataSet.Tables[0].DefaultView;
         }
+
+        public void insertData(string table, List<string> values)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; user id=root; database=worldcupbd; password=alonso; SslMode = none");
+            mySqlConnection.Open();
+
+            string insertTable = "INSERT INTO " + table;
+            if (table.Equals("Usuario"))
+            {
+                insertTable += "(Nombreusuario, Apellidousuario, Correo, Username, Clave) " +
+                    "VALUES (";
+                foreach (var value in values)
+                {
+                    insertTable += "'" + value + "'" + ",";
+                }
+                
+            }
+            insertTable = insertTable.Remove(insertTable.Length - 1);
+            insertTable += ")";
+            MySqlCommand sqlCommand = new MySqlCommand(insertTable, mySqlConnection);
+            sqlCommand.ExecuteReader();
+            mySqlConnection.Close();
+        }
     }
 }  
