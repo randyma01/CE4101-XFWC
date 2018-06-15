@@ -9,10 +9,10 @@ namespace PEDS_XWFC.Models
 {
     public class NewUser
     {
+
         [Required]
-        public User GetUser { get; set; }
-        
-        public UserFanatic GetUserFanatic { get; set; }
+        public User User{ get; set; }
+        public UserFanatic UserFanatic { get; set; }
         public string Country { get; set; }
         public List<SelectListItem> ListCountries { get; set; }
     }

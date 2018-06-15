@@ -18,7 +18,7 @@ namespace PEDS_XWFC.Controllers
         // GET: SignUp
         public ActionResult SignUp()
         {
-
+            
             DataView dataView;
             dataView = connection.getData("SELECT * FROM Pais");
             model.ListCountries = new List<SelectListItem>();
@@ -58,21 +58,30 @@ namespace PEDS_XWFC.Controllers
             return RedirectToAction("SignUp", "SignUp");
         }
 
+        
         [HttpPost]
-        public ActionResult CreateAccount(NewUser user)
+        public ActionResult CreateAccount()
         {
-            List<string> values = new List<string>
-            {   //(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave) 
-                {user.GetUser.FirstName},
-                {user.GetUser.LastName},
-                {user.GetUser.Email},
-                {user.GetUser.UserName},
-                {user.GetUser.Password}
-            };
-            connection.insertData("Usuario", values);
-            return View();
+            if (ModelState.IsValid)
+            {
+                string name = Request["firstName"].ToString() + Request["lastName"].ToString();
+                string user = Request["userName"];
+                this.model.User.FirstName = name;
+            }
+            //List<string> values = new List<string>
+            //{   //(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave) 
+
+            //    {model.User.FirstName},
+            //    {model.User.LastName},
+            //    {model.User.Email},
+            //    {model.User.UserName},
+            //    {model.User.Password}
+            //};
+            //connection.insertData("Usuario", values);
+            
+            return RedirectToAction("LogIn", "LogIn");
         }
 
-       
+
     }
 }

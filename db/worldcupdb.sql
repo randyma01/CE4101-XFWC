@@ -209,4 +209,3 @@ VALUES
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Root1", "too1", "root11@gmail.com", "root1","root12");
-
