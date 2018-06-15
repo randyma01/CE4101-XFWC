@@ -1,4 +1,4 @@
-﻿using PEDS_XWFC.Models;
+using PEDS_XWFC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +12,8 @@ namespace PEDS_XWFC.Controllers
     public class LogInController : Controller
     {
 
-        Connection connection = new Connection();
+        User user = new User();
+
         // GET: LogIn
         public ActionResult LogIn()
         {
@@ -25,7 +26,7 @@ namespace PEDS_XWFC.Controllers
             string userName = Request["userName"];
             string password = Request["password"];
 
-            User user = new User();
+            
             user.UserName = userName;
             user.Password = password;
 
@@ -33,7 +34,7 @@ namespace PEDS_XWFC.Controllers
             {
                 return RedirectToAction("MainPage", "MainPage");
             }
-            else
+            else 
             {
                 return View("LogIn");
             }
