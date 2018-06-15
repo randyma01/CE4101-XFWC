@@ -180,6 +180,7 @@
     <Content Include="Views\ChampionMode\ChampionMode.cshtml" />
     <Content Include="Views\DreamTeam\DreamTeam.cshtml" />
     <Content Include="Views\Live\Live.cshtml" />
+    <Content Include="Views\NewTournament\NewTournament.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

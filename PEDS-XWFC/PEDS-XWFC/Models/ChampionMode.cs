@@ -12,6 +12,7 @@ namespace PEDS_XWFC.Models
         public NewUser FanUser { get; set; }
 
 
+
     }
 }
 
