@@ -9,7 +9,7 @@ namespace PEDS_XWFC.Controllers
     public class MainPageController : Controller
     {
         // GET: MainPage
-        public ActionResult Index()
+        public ActionResult MainPage()
         {
             return View();
         }

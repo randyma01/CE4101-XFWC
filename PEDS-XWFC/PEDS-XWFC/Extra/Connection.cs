@@ -11,7 +11,7 @@ namespace PEDS_XWFC.Controllers
     {
         public DataView getData(string command)
         {
-            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; user id=root; database=worldcupbd; password=alex2002; SslMode = none");
+            MySqlConnection mySqlConnection = new MySqlConnection("server=localhost; user id=root; database=worldcupbd; password=alonso; SslMode = none");
 
             mySqlConnection.Open();
 

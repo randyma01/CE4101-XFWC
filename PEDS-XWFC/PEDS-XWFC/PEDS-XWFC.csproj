@@ -173,11 +173,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\_Layout.cshtml" />
-    <Content Include="Views\MainPage\MainPage.cshtml" />
     <Content Include="Views\Templates\_Layout.cshtml" />
-    <Content Include="Views\MainPage\MainPage.cshtml" />
     <Content Include="Views\Templates\HomeLayout.cshtml" />
     <Content Include="Views\EditUser\EditUser.cshtml" />
+    <Content Include="Views\MainPage\MainPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
