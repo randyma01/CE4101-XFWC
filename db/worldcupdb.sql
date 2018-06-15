@@ -208,8 +208,6 @@ FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
-;
-
 CREATE TABLE Prediccion(
 IdPrediccion INT NOT NULL AUTO_INCREMENT,
 Resultado VARCHAR(70),
