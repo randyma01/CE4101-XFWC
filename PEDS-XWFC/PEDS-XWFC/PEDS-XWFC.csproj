@@ -177,6 +177,9 @@
     <Content Include="Views\Templates\HomeLayout.cshtml" />
     <Content Include="Views\EditUser\EditUser.cshtml" />
     <Content Include="Views\MainPage\MainPage.cshtml" />
+    <Content Include="Views\ChampionMode\ChampionMode.cshtml" />
+    <Content Include="Views\DreamTeam\DreamTeam.cshtml" />
+    <Content Include="Views\Live\Live.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
