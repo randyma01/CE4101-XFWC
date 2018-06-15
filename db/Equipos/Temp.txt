@@ -1,0 +1,207 @@
+Uruguay
+1
+GK
+MUSLERA Fernando
+16.06.1986
+MUSLERA
+Galatasaray SK (TUR)
+190
+74
+Uruguay
+2
+DF
+GIMENEZ Jose
+20.01.1995
+J.M. GIMENEZ
+Atletico Madrid (ESP)
+185
+77
+Uruguay
+3
+DF
+GODIN Diego
+16.02.1986
+GODIN
+Atletico Madrid (ESP)
+185
+73
+Uruguay
+4
+DF
+VARELA Guillermo
+24.03.1993
+VARELA
+CA Penarol (URU)
+173
+70
+Uruguay
+5
+MF
+SANCHEZ Carlos
+02.12.1984
+SANCHEZ
+CF Monterrey (MEX)
+171
+74
+Uruguay
+6
+MF
+BENTANCUR Rodrigo
+25.06.1997
+BENTANCUR
+Juventus FC (ITA)
+187
+73
+Uruguay
+7
+MF
+RODRIGUEZ Cristian
+30.09.1985
+C. RODRIGUEZ
+CA Penarol (URU)
+178
+79
+Uruguay
+8
+MF
+NANDEZ Nahitan
+28.12.1995
+NANDEZ
+CA Boca Juniors (ARG)
+171
+61
+Uruguay
+9
+FW
+SUAREZ Luis
+24.01.1987
+SUAREZ
+FC Barcelona (ESP)
+182
+85
+Uruguay
+10
+FW
+DE ARRASCAETA Giorgian
+01.06.1994
+DE ARRASCAETA
+Cruzeiro EC (BRA)
+172
+64
+Uruguay
+11
+FW
+STUANI Cristhian
+12.10.1986
+STUANI
+Girona FC (ESP)
+186
+78
+Uruguay
+12
+GK
+CAMPANA Martin
+29.05.1989
+CAMPAÑA
+CA Independiente (ARG)
+184
+79
+Uruguay
+13
+DF
+SILVA Gaston
+05.03.1994
+G. SILVA
+CA Independiente (ARG)
+185
+74
+Uruguay
+14
+MF
+TORREIRA Lucas
+11.02.1996
+TORREIRA
+UC Sampdoria (ITA)
+168
+61
+Uruguay
+15
+MF
+VECINO Matias
+24.08.1991
+VECINO
+FC Internazionale (ITA)
+189
+80
+Uruguay
+16
+DF
+PEREIRA Maximiliano
+08.06.1984
+M. PEREIRA
+FC Porto (POR)
+173
+73
+Uruguay
+17
+MF
+LAXALT Diego
+07.02.1993
+LAXALT
+Genoa CFC (ITA)
+178
+66
+Uruguay
+18
+FW
+GOMEZ Maximiliano
+14.08.1996
+M. GOMEZ
+Celta Vigo (ESP)
+186
+85
+Uruguay
+19
+DF
+COATES Sebastian
+07.10.1990
+COATES
+Sporting CP (POR)
+196
+89
+Uruguay
+20
+FW
+URRETAVISCAYA Jonathan
+19.03.1990
+URRETAVISCAYA
+CF Monterrey (MEX)
+172
+66
+Uruguay
+21
+FW
+CAVANI Edinson
+14.02.1987
+CAVANI
+Paris Saint-Germain FC (FRA)
+188
+78
+Uruguay
+22
+DF
+CACERES Martin
+07.04.1987
+CACERES
+SS Lazio (ITA)
+178
+75
+Uruguay
+23
+GK
+SILVA Martin
+25.03.1983
+M. SILVA
+CR Vasco da Gama (BRA)
+187
+82
