@@ -33,7 +33,7 @@ namespace PEDS_XWFC.Controllers
             {
                 return RedirectToAction("MainPage", "MainPage");
             }
-            else if (userName.Length != 0)
+            else 
             {
                 return View("LogIn");
             }
