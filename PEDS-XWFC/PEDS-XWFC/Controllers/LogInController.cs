@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PEDS_XWFC.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,24 +16,29 @@ namespace PEDS_XWFC.Controllers
         // GET: LogIn
         public ActionResult LogIn()
         {
-            
             return View();
         }
 
-        //public ActionResult ButtonLogIn()
-        //{
-        //    DataView dataView;
-        //    dataView = connection.getData("SELECT * FROM Pais");
-        //    //model.ListCountries = new List<SelectListItem>();
+        [HttpPost]
+        public ActionResult ButtonLogIn()
+        {
+            string userName = Request["userName"];
+            string password = Request["password"];
 
-        //    foreach (DataRowView datarow in dataView)
-        //    {
-        //        var newItem = new SelectListItem { Text = datarow["NombrePais"].ToString(), Value = datarow["IdPais"].ToString() };
-        //        //model.ListCountries.Add(newItem);
-        //    }
-        //    return View();
+            User user = new User();
+            user.UserName = userName;
+            user.Password = password;
 
-        //}
+            if (user.VerifyUser())
+            {
+                return RedirectToAction("MainPage", "MainPage");
+            }
+            else if (userName.Length != 0)
+            {
+                return View("LogIn");
+            }
+
+        }
 
 
     }
