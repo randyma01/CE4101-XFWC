@@ -231,7 +231,7 @@ FIELDS TERMINATED BY '\n' (IdEstadisticas);
  
  
 INSERT INTO Estadisticas
-(JuegosGanados,JuegosPerdido, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistentcias, RecupercionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
+(JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecupercionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
 VALUES
 (0,0,0,0,0,0,0,0,0,0,0,0,0);
 
