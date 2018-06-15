@@ -68,13 +68,13 @@ PRIMARY KEY(IdPatrocinador)
 CREATE TABLE Estadisticas(
 IdEstadisticas INT NOT NULL AUTO_INCREMENT, 
 JuegosGanados INT, 
-JuegosPerdido INT, 
+JuegosPerdidos INT, 
 JuegosEmpatados INT, 
 TotalMinutosJugados INT, 
 Goles INT, 
 TirosAMarco INT, 
-Asistentcias INT, 
-RecupercionBalones INT, 
+Asistencias INT, 
+RecuperacionBalones INT, 
 TarjetasAmarillas INT, 
 TarjetasRojas INT, 
 PenalesDetenidos INT, 
@@ -89,7 +89,7 @@ Pasaporte INT,
 IdPais INT ,
 Posicion VARCHAR(30),
 NombreFutbolista VARCHAR(60),
-FechaNacimiento TIME,
+FechaNacimiento DATE,
 NombreEquipo VARCHAR(30),
 Altura  INT,
 Peso    INT,
@@ -172,7 +172,7 @@ FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
-CREATE TABLE Jugadores_EquipoIdeal(
+CREATE TABLE Futbolista_EquipoIdeal(
 IdFutbolista INT NOT NULL,
 IdEquipoIdeal INT NOT NULL,
 FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
@@ -219,16 +219,26 @@ FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
 );
 
 
-
-
 /*------------ Cargar datos a la base --------------*/
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/listCountries.txt'
 INTO TABLE worldcupbd.pais
 FIELDS TERMINATED BY '\n' (NombrePais);
- 
 
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Teams/Francia.txt'
+INTO TABLE worldcupbd.futbolista
+FIELDS TERMINATED BY '\n' (IdEstadisticas);
  
+ 
+INSERT INTO Estadisticas
+(JuegosGanados,JuegosPerdido, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistentcias, RecupercionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
+VALUES
+(0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas) 
+VALUES
+(56017835,60,"MF","KANTE Ngolo",'1991-03-29',"Chelsea FC (ENG)",168,70,10,True,1);
+
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Gustavo", "Fallas", "gustavo@gmail.com", "tav","1234"),
