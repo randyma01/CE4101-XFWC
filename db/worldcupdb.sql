@@ -209,11 +209,10 @@ VALUES
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Root1", "too1", "root11@gmail.com", "root1","root12");
-
 INSERT INTO Patrocinador(NombrePatrocinador) VALUES ("X-Coca-Cola");
 
 INSERT INTO Torneo (Nombre, FechaInicio, FechaFinaliza, IdPais, IdPatrocinador)
 VALUES
 ("Australia 2028 X-Coca-Cola", "2028-06-22 00:00:00", "2028-06-22 00:00:00", 9 ,1);
 
-SELECT * FROM Torneo;
+
