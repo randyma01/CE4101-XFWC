@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\IdealTeamController.cs" />
     <Compile Include="Extra\Connection.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
@@ -176,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\IdealTeam\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
