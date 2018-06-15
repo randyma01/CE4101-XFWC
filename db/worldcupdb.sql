@@ -1,12 +1,8 @@
 /*
 Instituto Tecnológico de Costa Rica
-
 Curso: Especificación y Diseño de Software
-
 Proyecto: X-FIFA World Cuo (MySQL)
-
 Semestre I, 2018
-
 Miembros:
 	Gustavo Fallas Carrera - 2014035394
 	Randy Martínez Sandí - 2014047395
@@ -176,7 +172,7 @@ FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
-CREATE TABLE Jugadres_EquipoIdeal(
+CREATE TABLE Jugadores_EquipoIdeal(
 IdFutbolista INT NOT NULL,
 IdEquipoIdeal INT NOT NULL,
 FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
@@ -212,12 +208,7 @@ FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
-CREATE TABLE Jugadres_EquipoIdeal(
-IdFutbolista INT NOT NULL,
-IdEquipoIdeal INT NOT NULL,
-FOREIGN KEY(IdFutbolista) REFERENCES Futbolista(IdFutbolista),
-FOREIGN KEY(IdEquipoIdeal) REFERENCES EquipoIdeal(IdEquipoIdeal)
-);
+;
 
 CREATE TABLE Prediccion(
 IdPrediccion INT NOT NULL AUTO_INCREMENT,
@@ -229,10 +220,14 @@ PRIMARY KEY (IdPrediccion),
 FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
 );
 
+
+
+
+/*------------ Cargar datos a la base --------------*/
+
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/listCountries.txt'
 INTO TABLE worldcupbd.pais
 FIELDS TERMINATED BY '\n' (NombrePais);
-
  
 
  
@@ -250,5 +245,3 @@ INSERT INTO Patrocinador(NombrePatrocinador) VALUES ("X-Coca-Cola");
 INSERT INTO Torneo (Nombre, FechaInicio, FechaFinaliza, IdPais, IdPatrocinador)
 VALUES
 ("Australia 2028 X-Coca-Cola", "2028-06-22 00:00:00", "2028-06-22 00:00:00", 9 ,1);
-
-
