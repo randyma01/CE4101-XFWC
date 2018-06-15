@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
+    <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Extra\Connection.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
@@ -184,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Tournament\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
