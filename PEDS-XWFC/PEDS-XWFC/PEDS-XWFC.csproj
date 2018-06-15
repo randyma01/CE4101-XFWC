@@ -135,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Extra\Connection.cs" />
     <Compile Include="Controllers\LogInController.cs" />
@@ -143,6 +142,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChampionMode.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\NewUser.cs" />
@@ -177,6 +177,9 @@
     <Content Include="Views\Templates\HomeLayout.cshtml" />
     <Content Include="Views\EditUser\EditUser.cshtml" />
     <Content Include="Views\MainPage\MainPage.cshtml" />
+    <Content Include="Views\ChampionMode\ChampionMode.cshtml" />
+    <Content Include="Views\DreamTeam\DreamTeam.cshtml" />
+    <Content Include="Views\Live\Live.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
