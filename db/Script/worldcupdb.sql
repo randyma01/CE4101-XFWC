@@ -209,7 +209,6 @@ FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 CREATE TABLE Prediccion(
 IdPrediccion INT NOT NULL AUTO_INCREMENT,
 Resultado VARCHAR(70),
-Numero INT UNIQUE,
 Fase VARCHAR(30),
 IdPartido INT NOT NULL,
 PRIMARY KEY (IdPrediccion),
@@ -227,6 +226,11 @@ LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Teams/Francia.txt'
 INTO TABLE worldcupbd.futbolista
 FIELDS TERMINATED BY '\n' (IdEstadisticas);
  
+/*
+Torneo
+Partido
+Prediccion
+*/
  
 INSERT INTO Estadisticas
 (JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecupercionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
