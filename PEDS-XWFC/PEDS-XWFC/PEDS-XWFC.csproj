@@ -146,6 +146,7 @@
     <Compile Include="Models\FootballPlayer.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Power.cs" />
+    <Compile Include="Models\Predictions.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\Teams.cs" />
