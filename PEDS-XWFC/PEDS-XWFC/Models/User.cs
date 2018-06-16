@@ -12,31 +12,20 @@ namespace PEDS_XWFC.Models
     public class User
     {
         public int IdUser { get; set; }
-
         [Required]
         public string FirstName { get; set; }
-
         [Required]
         public string LastName { get; set; }
-
         [Required]
         public string Email    { get; set; }
-
         [Required]
         public string UserName { get; set; }
-
         [Required]
         public string Password { get; set; }
 
-
-        /*
-         * 
-         */
         public bool VerifyUser()
         {
-
             Connection connection = new Connection();
-
 
             DataView dataView;
             dataView = connection.getData("SELECT IdUsuario, NombreUsuario, ApellidoUsuario, Correo FROM Usuario WHERE UserName= '" + this.UserName + "' AND Clave= '" + this.Password + "' ");
@@ -54,10 +43,6 @@ namespace PEDS_XWFC.Models
                 this.Email = datarow["Correo"].ToString();
                 return true;
             }
-            
-
         }
-
-
     }
 }

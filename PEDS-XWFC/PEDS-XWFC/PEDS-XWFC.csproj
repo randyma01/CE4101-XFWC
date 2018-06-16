@@ -143,7 +143,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChampionMode.cs" />
+    <Compile Include="Models\FootballPlayer.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Power.cs" />
+    <Compile Include="Models\Predictions.cs" />
     <Compile Include="Models\Sponsor.cs" />
+    <Compile Include="Models\Statistic.cs" />
+    <Compile Include="Models\Teams.cs" />
     <Compile Include="Models\Tournament.cs" />
     <Compile Include="Models\NewUser.cs" />
     <Compile Include="Models\User.cs" />
