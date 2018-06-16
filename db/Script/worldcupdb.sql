@@ -186,7 +186,6 @@ Narracion BLOB,
 Fecha TIMESTAMP,
 Sede VARCHAR(30),
 Resultado VARCHAR(70),
-Numero INT UNIQUE,
 PRIMARY KEY (IdPartido),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
