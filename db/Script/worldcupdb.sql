@@ -166,11 +166,11 @@ FOREIGN KEY(IdPatrocinador) REFERENCES Patrocinador(IdPatrocinador)
 
 CREATE TABLE EquipoIdeal(
 IdEquipoIdeal INT NOT NULL AUTO_INCREMENT, 
-IdFanatico INT NOT NULL, 
 IdTorneo INT NOT NULL,
+IdFanatico INT NOT NULL, 
 PRIMARY KEY (IdEquipoIdeal),
-FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
-FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico)
 );
 
 CREATE TABLE Futbolista_EquipoIdeal(
@@ -198,15 +198,6 @@ FOREIGN KEY(IdSeleccion) REFERENCES Seleccion(IdSeleccion),
 FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
 );
 
-CREATE TABLE ModoCampeonato(
-IdModoCampeonato INT NOT NULL AUTO_INCREMENT,
-IdFanatico INT NOT NULL,
-IdTorneo INT NOT NULL,
-PRIMARY KEY(IdModoCampeonato),
-FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
-FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
-);
-
 CREATE TABLE Prediccion(
 IdPrediccion INT NOT NULL AUTO_INCREMENT,
 Resultado VARCHAR(5),
@@ -216,6 +207,18 @@ PRIMARY KEY (IdPrediccion),
 FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
 );
+
+CREATE TABLE ModoCampeonato(
+IdModoCampeonato INT NOT NULL AUTO_INCREMENT,
+IdTorneo INT NOT NULL,
+IdPrediccion INT NOT NULL,
+IdFanatico INT NOT NULL,
+PRIMARY KEY(IdModoCampeonato),
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo),
+FOREIGN KEY(IdPrediccion) REFERENCES Prediccion(IdPrediccion),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico)
+);
+
 
 /*------------ Cargar datos a la base --------------*/
 
@@ -244,7 +247,8 @@ VALUES
 ("41400-9876", 0, 41, 1,"Me gusta el futbol.", "no tengo foto");
 
 # Cargando usuario fanatico desactivado #
-INSERT INTO ()
+INSERT INTO Usuario_Desactivado(IdUsuario)
+VALUE (3);
 
 # Cargando usuario administrador de prueba #
 INSERT INTO Administrador(IdUsuario)
@@ -302,7 +306,12 @@ VALUES
 # Cargando predicciones #
 INSERT INTO Prediccion(Resultado, IdPartido, IdFanatico) 
 VALUES 
-("2-1", 1, 2); 
+("2-1", 1, 1); 
+
+# Cargando modo campeonato #
+INSERT INTO ModoCampeonato(IdTorneo,IdPrediccion,IdFanatico)
+VALUES
+(1,1,1);
 
 #---------------------------------------------------------------------------------------
 
@@ -319,12 +328,32 @@ VALUES
 
 #---------------------------------------------------------------------------------------
 
+# Cargando futbolista a una seleccion #
+INSERT INTO Futbolista_Seleccion(IdSeleccion,IdFutbolista)
+VALUES
+(1,1);
+
+# Cargando un equipo ideal a un usuario fanatico #
+INSERT INTO EquipoIdeal(IdTorneo,IdFanatico)
+VALUES(2,1);
+
+# Cargando futbolista a un pinche equipo ideal #
+INSERT INTO Futbolista_EquipoIdeal(IdFutbolista,IdEquipoIdeal)
+VALUES
+(1,1);
+
+#---------------------------------------------------------------------------------------
+
 # Cargando asociacon de usuarios fanaticos al torneo : 1 #
 INSERT INTO Fanatico_Torneo(IdFanatico, IdTorneo, PuntosModoCampeonato, PuntosEquipoIdeal)
 VALUES
 (1,1,79,42);
 
-SELECT * From Fanatico
+#---------------------------------------------------------------------------------------
+
+# Cargando poderes al torneo 1 #
+INSERT INTO Poderes(NombrePoder, PuntajePoder, IdTorneo, IdPatrocinador)
+VALUES
+("Bonus Doble-Triple-Bien-Sadico", 33, 1, 3);
 
 #---------------------------------------------------------------------------------------
- 
