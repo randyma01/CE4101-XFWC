@@ -5,10 +5,9 @@ using System.Web;
 
 namespace PEDS_XWFC.Models
 {
-    public class Sponsor
+    public class Game
     {
-        public int IdSponsor { get; set; }
-        public string NameSponsor { get; set; }
+
+
     }
 }
-

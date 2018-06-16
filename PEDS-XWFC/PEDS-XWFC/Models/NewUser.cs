@@ -9,7 +9,6 @@ namespace PEDS_XWFC.Models
 {
     public class NewUser
     {
-
         [Required]
         public User User{ get; set; }
         public UserFanatic UserFanatic { get; set; }

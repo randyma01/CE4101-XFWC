@@ -187,7 +187,6 @@ Fecha TIMESTAMP,
 Sede VARCHAR(30),
 Resultado VARCHAR(70),
 Numero INT UNIQUE,
-Fase VARCHAR(30),
 PRIMARY KEY (IdPartido),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );

@@ -15,6 +15,10 @@ namespace PEDS_XWFC.Models
         public string StartDate { get; set; }
         public string FinishDate { get; set; }
         public string Country { get; set; }
+        public List<Power> ListPowers { get; set; }
+        public List<Game> ListGames { get; set; }
+
+
     }
 }
 
