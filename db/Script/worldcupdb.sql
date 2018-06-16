@@ -12,11 +12,11 @@ Miembros:
 #----------Creando bases de datos llamada: WorldCupBD----------#
 CREATE DATABASE IF NOT EXISTS WorldCupBD;
 
-#----------Usaando la base----------#
+#----------Usando la base----------#
 USE WorldCupBD;
 
 
-#----------Inicio: Creando las tablas----------#
+#----------Inicio: creando las tablas----------#
 
 CREATE TABLE Pais(
 IdPais INT NOT NULL AUTO_INCREMENT, 
@@ -112,7 +112,7 @@ FOREIGN KEY (IdPais) REFERENCES Pais(IdPais)
 
 CREATE TABLE Torneo(
 IdTorneo INT NOT NULL AUTO_INCREMENT, 
-Nombre VARCHAR (30),
+NombreTorneo VARCHAR (30),
 FechaInicio TIMESTAMP, 
 FechaFinaliza TIMESTAMP, 
 IdPais INT NOT NULL, 
@@ -140,7 +140,8 @@ FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 CREATE TABLE Fanatico_Torneo(
 IdFanatico INT NOT NULL,
 IdTorneo INT NOT NULL, 
-PuntosFanatico INT,
+PuntosModoCampeonato INT,
+PuntosEquipoIdeal INT, 
 FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
@@ -165,11 +166,11 @@ FOREIGN KEY(IdPatrocinador) REFERENCES Patrocinador(IdPatrocinador)
 
 CREATE TABLE EquipoIdeal(
 IdEquipoIdeal INT NOT NULL AUTO_INCREMENT, 
-IdFanatico INT NOT NULL, 
 IdTorneo INT NOT NULL,
+IdFanatico INT NOT NULL, 
 PRIMARY KEY (IdEquipoIdeal),
-FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
-FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico)
 );
 
 CREATE TABLE Futbolista_EquipoIdeal(
@@ -186,59 +187,50 @@ Narracion BLOB,
 Fecha TIMESTAMP,
 Sede VARCHAR(30),
 Resultado VARCHAR(70),
-Numero INT UNIQUE,
-Fase VARCHAR(30),
 PRIMARY KEY (IdPartido),
 FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
 );
 
 CREATE TABLE Seleccion_Partido(
-IdPartido INT NOT NULL,
 IdSeleccion INT NOT NULL,
-FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido),
-FOREIGN KEY(IdSeleccion) REFERENCES Seleccion(IdSeleccion)
-);
-
-CREATE TABLE ModoCampeonato(
-IdModoCampeonato INT NOT NULL AUTO_INCREMENT,
-IdFanatico INT NOT NULL,
-IdTorneo INT NOT NULL,
-PRIMARY KEY(IdModoCampeonato),
-FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
-FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo)
+IdPartido INT NOT NULL,
+FOREIGN KEY(IdSeleccion) REFERENCES Seleccion(IdSeleccion),
+FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
 );
 
 CREATE TABLE Prediccion(
 IdPrediccion INT NOT NULL AUTO_INCREMENT,
-Resultado VARCHAR(70),
-Numero INT UNIQUE,
-Fase VARCHAR(30),
+Resultado VARCHAR(5),
 IdPartido INT NOT NULL,
+IdFanatico INT NOT NULL,
 PRIMARY KEY (IdPrediccion),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico),
 FOREIGN KEY(IdPartido) REFERENCES Partido(IdPartido)
+);
+
+CREATE TABLE ModoCampeonato(
+IdModoCampeonato INT NOT NULL AUTO_INCREMENT,
+IdTorneo INT NOT NULL,
+IdPrediccion INT NOT NULL,
+IdFanatico INT NOT NULL,
+PRIMARY KEY(IdModoCampeonato),
+FOREIGN KEY(IdTorneo) REFERENCES Torneo(IdTorneo),
+FOREIGN KEY(IdPrediccion) REFERENCES Prediccion(IdPrediccion),
+FOREIGN KEY(IdFanatico) REFERENCES Fanatico(IdFanatico)
 );
 
 
 /*------------ Cargar datos a la base --------------*/
 
+# Cargando paises #
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/listCountries.txt'
 INTO TABLE worldcupbd.pais
 FIELDS TERMINATED BY '\n' (NombrePais);
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Teams/Francia.txt'
-INTO TABLE worldcupbd.futbolista
-FIELDS TERMINATED BY '\n' (IdEstadisticas);
- 
- 
-INSERT INTO Estadisticas
-(JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecupercionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
-VALUES
-(0,0,0,0,0,0,0,0,0,0,0,0,0);
+#---------------------------------------------------------------------------------------
 
-INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas) 
-VALUES
-(56017835,60,"MF","KANTE Ngolo",'1991-03-29',"Chelsea FC (ENG)",168,70,10,True,1);
 
+# Cargando usuarios de prueba # 
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Gustavo", "Fallas", "gustavo@gmail.com", "tav","1234"),
@@ -248,8 +240,120 @@ VALUES
 INSERT INTO Usuario(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave)
 VALUES
 ("Root1", "too1", "root11@gmail.com", "root1","root12");
-INSERT INTO Patrocinador(NombrePatrocinador) VALUES ("X-Coca-Cola");
 
-INSERT INTO Torneo (Nombre, FechaInicio, FechaFinaliza, IdPais, IdPatrocinador)
+# Cargando usuario fanatico de prueba #
+INSERT INTO Fanatico(Telefono, Puntos, IdPais, IdUsuario, Descripcion, Foto)
 VALUES
-("Australia 2028 X-Coca-Cola", "2028-06-22 00:00:00", "2028-06-22 00:00:00", 9 ,1);
+("41400-9876", 0, 41, 1,"Me gusta el futbol.", "no tengo foto");
+
+# Cargando usuario fanatico desactivado #
+INSERT INTO Usuario_Desactivado(IdUsuario)
+VALUE (3);
+
+# Cargando usuario administrador de prueba #
+INSERT INTO Administrador(IdUsuario)
+VALUES(4);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando patrocinadores 1 #
+INSERT INTO Patrocinador (NombrePatrocinador)
+VALUES ("Dos Pinos");
+
+# Cargando patrocinador 2 #
+INSERT INTO Patrocinador (NombrePatrocinador)
+VALUES ("Bimbo");
+
+# Cargando patrocinador 3 #
+INSERT INTO Patrocinador(NombrePatrocinador) 
+VALUES ("X-Coca-Cola");
+
+#---------------------------------------------------------------------------------------
+
+# Cargando un torneo 1 #
+INSERT INTO Torneo (NombreTorneo, FechaInicio, FechaFinaliza, IdPais,IdPatrocinador )
+VALUES ("Costa Rica 2034", "2034-05-1 00:34:34", "2034-06-29 22:34:34", 41, 1);
+
+# Cargando un torneo  2 #
+INSERT INTO Torneo (NombreTorneo, FechaInicio, FechaFinaliza, IdPais,IdPatrocinador )
+VALUES ("Mexico 2026", "2026-05-1 00:34:34", "2026-06-29 22:34:34", 114, 2);
+
+# Cargando selecciones al torneo 1 #
+INSERT INTO Seleccion(NombreSeleccion, IdPais)
+VALUES
+("Iceland", 75),
+("Croatia",42);
+
+# Cargando asociaciones de las selecciones al torneo 1 #
+INSERT INTO Seleccion_Torneo(IdSeleccion, IdTorneo)
+VALUES
+(1,1),
+(2,1); 
+
+# Cargando partido 1:  torneo 1 #
+INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
+VALUES
+(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Fello Meza", "4-4");
+
+# Cargando selecciones en el partido 1: torneo 1 #
+INSERT INTO Seleccion_Partido(IdSeleccion, IdPartido)
+VALUES
+(1,1),
+(2,1);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando predicciones #
+INSERT INTO Prediccion(Resultado, IdPartido, IdFanatico) 
+VALUES 
+("2-1", 1, 1); 
+
+# Cargando modo campeonato #
+INSERT INTO ModoCampeonato(IdTorneo,IdPrediccion,IdFanatico)
+VALUES
+(1,1,1);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando estadisiticas de Kante #
+INSERT INTO Estadisticas
+(JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecuperacionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
+VALUES
+(0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+# Cargando jugador Kante #
+INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas) 
+VALUES
+(56017835,60,"MF","KANTE Ngolo",'1991-03-29',"Chelsea FC (ENG)",168,70,10,True,1);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando futbolista a una seleccion #
+INSERT INTO Futbolista_Seleccion(IdSeleccion,IdFutbolista)
+VALUES
+(1,1);
+
+# Cargando un equipo ideal a un usuario fanatico #
+INSERT INTO EquipoIdeal(IdTorneo,IdFanatico)
+VALUES(2,1);
+
+# Cargando futbolista a un pinche equipo ideal #
+INSERT INTO Futbolista_EquipoIdeal(IdFutbolista,IdEquipoIdeal)
+VALUES
+(1,1);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando asociacon de usuarios fanaticos al torneo : 1 #
+INSERT INTO Fanatico_Torneo(IdFanatico, IdTorneo, PuntosModoCampeonato, PuntosEquipoIdeal)
+VALUES
+(1,1,79,42);
+
+#---------------------------------------------------------------------------------------
+
+# Cargando poderes al torneo 1 #
+INSERT INTO Poderes(NombrePoder, PuntajePoder, IdTorneo, IdPatrocinador)
+VALUES
+("Bonus Doble-Triple-Bien-Sadico", 33, 1, 3);
+
+#---------------------------------------------------------------------------------------
