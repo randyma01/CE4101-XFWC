@@ -282,24 +282,38 @@ VALUES ("Mexico 2026", "2026-05-1 00:34:34", "2026-06-29 22:34:34", 114, 2);
 INSERT INTO Seleccion(NombreSeleccion, IdPais)
 VALUES
 ("Iceland", 75),
-("Croatia",42);
+("Croatia",42),
+("Denmark",46),
+("Sweden", 169),
+("Australia",9),
+("Belgium", 17);
 
 # Cargando asociaciones de las selecciones al torneo 1 #
 INSERT INTO Seleccion_Torneo(IdSeleccion, IdTorneo)
 VALUES
 (1,1),
-(2,1); 
+(2,1),
+(3,1),
+(4,1),
+(5,2),
+(6,2); 
 
 # Cargando partido 1:  torneo 1 #
 INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
 VALUES
-(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Fello Meza", "4-4");
+(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Fello Meza", "4-4"),
+(1, " sin narracion todavia " ,"2019-03-6 004:24:43", "Estadio Verde", "1-2"),
+(2, " sin narracion todavia " ,"2005-02-16 04:34:34", "Estadio Azul", "3-2");
 
 # Cargando selecciones en el partido 1: torneo 1 #
 INSERT INTO Seleccion_Partido(IdSeleccion, IdPartido)
 VALUES
-(1,1),
-(2,1);
+#(1,1),
+#(2,1),
+(3,2),
+(4,2),
+(5,3),
+(6,3);
 
 #---------------------------------------------------------------------------------------
 
@@ -357,3 +371,23 @@ VALUES
 ("Bonus Doble-Triple-Bien-Sadico", 33, 1, 3);
 
 #---------------------------------------------------------------------------------------
+
+
+/*------------ Queries --------------*/
+
+SELECT 
+partido.IdPartido, seleccion.NombreSeleccion, partido.Sede, partido.Fecha
+FROM  
+partido INNER JOIN
+         seleccion_partido ON partido.IdPartido = seleccion_partido.IdPartido 
+         INNER JOIN
+         seleccion ON seleccion_partido.IdSeleccion = seleccion.IdSeleccion WHERE (IdTorneo = 1);
+         
+         
+         
+SELECT * FROM Pais;
+SELECT * FROM Seleccion;
+SELECT * FROM Seleccion_Torneo;
+
+         
+         
