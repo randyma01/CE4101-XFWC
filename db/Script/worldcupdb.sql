@@ -183,7 +183,7 @@ FOREIGN KEY(IdEquipoIdeal) REFERENCES EquipoIdeal(IdEquipoIdeal)
 CREATE TABLE Partido(
 IdPartido INT NOT NULL AUTO_INCREMENT,
 IdTorneo INT NOT NULL,
-Narracion BLOB,
+Narracion LONGTEXT,
 Fecha TIMESTAMP,
 Sede VARCHAR(30),
 Resultado VARCHAR(70),
@@ -290,7 +290,7 @@ VALUES
 # Cargando partido 1:  torneo 1 #
 INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
 VALUES
-(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Fello Meza", "4-4");
+(1, "Gol{Duarte, 23:34}" ,"2026-05-1 00:34:34", "Fello Meza", "4-4");
 
 # Cargando selecciones en el partido 1: torneo 1 #
 INSERT INTO Seleccion_Partido(IdSeleccion, IdPartido)
@@ -379,10 +379,10 @@ VALUES
 (10,1);
 INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
 VALUES
-(1, " sin narracion todavia " ,"2026-05-2 07:34:34", "Estadio Nacional", "0-0"), #id 2
-(1, " sin narracion todavia " ,"2026-05-2 10:34:34", "Ebal Rodríguez", "0-0"), #id 3
-(1, " sin narracion todavia " ,"2026-05-3 11:34:34", "Estadio Ricardo Saprissa Aymá", "0-0"), #id 4
-(1, " sin narracion todavia " ,"2026-05-4 12:34:34", "Estadio Nacional", "0-0"); #id 5
+(1, "Gol{Duarte, 23:34}" ,"2026-05-2 07:34:34", "Estadio Nacional", "0-0"), #id 2
+(1, "Gol{Duarte, 23:34}" ,"2026-05-2 10:34:34", "Ebal Rodríguez", "0-0"), #id 3
+(1, "en vivo" ,"2026-05-3 11:34:34", "Estadio Ricardo Saprissa Aymá", "0-0"), #id 4
+(1, "" ,"2026-05-4 12:34:34", "Estadio Nacional", "0-0"); #id 5
 
 INSERT INTO Seleccion_Partido(IdSeleccion, IdPartido)
 VALUES
