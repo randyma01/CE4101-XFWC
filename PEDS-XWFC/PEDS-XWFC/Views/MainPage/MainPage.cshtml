@@ -15,8 +15,7 @@
             @Html.Label("Torneos")
             @Html.DropDownListFor(m => m.Tournament.NameTournament,  new SelectList(Model.ListTournaments, "Value", "Text"),
              htmlAttributes: new { @class = "list-inline  form-control", @size = "20", @formaction = @Url.Action("Calendar") })
-
-            <button type="submit" formaction=@Url.Action("Calendar") formmethod="post" style="visibility:hidden"></button>
+            <button type="submit" formaction=@Url.Action("Calendar", "MainPage", new {idFanatic = Model.idUserFanatic}) formmethod="post" style="visibility:hidden"></button>
         </div>
         <div class="col-xs-6">
             <div class="form-group">
@@ -28,9 +27,23 @@
                         </tbody>
                     </table>
                 </div>
-                <button name="buttonViewRankingTournament" type="button" class="btn btn-primary" style="visibility:hidden">@PEDS_XWFC.Properties.Resources.ViewRanking</button>
-                <button name="buttonViewDTSignInTournament" type="button" class="btn btn-primary" style="visibility:hidden">@PEDS_XWFC.Properties.Resources.ViewDreamTeam</button>
-                <button name="buttonSignInTournament" type="button" class="btn btn-danger">@PEDS_XWFC.Properties.Resources.SignIn</button>
+                @{
+                    string visibility = "hidden";
+                    if (Model.VisibilityVR == true){
+                        visibility = "visible";
+                    }
+                    string visibility1 = "hidden";
+                    if (Model.VisibilitySIT == true){
+                        visibility1 = "visible";
+                    }
+                    string visibility2 = "hidden";
+                    if (Model.VisibilityVDT == true){
+                        visibility2 = "visible";
+                    }
+                }
+                <button name="buttonViewRankingTournament" type="button" class="btn btn-primary" style="visibility:@visibility">@PEDS_XWFC.Properties.Resources.ViewRanking</button>
+                <button name="buttonViewDTTournament" type="button" class="btn btn-primary" style="visibility:@visibility2">@PEDS_XWFC.Properties.Resources.ViewDreamTeam</button>
+                <button name="buttonSignInTournament" type="button" class="btn btn-danger" style="visibility:@visibility1">@PEDS_XWFC.Properties.Resources.SignIn</button>
             </div>
         </div>
     </div>

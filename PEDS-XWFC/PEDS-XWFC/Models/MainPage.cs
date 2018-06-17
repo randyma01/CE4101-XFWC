@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,8 +14,11 @@ namespace PEDS_XWFC.Models
 
         public Tournament Tournament { get; set; }
         public List<SelectListItem> ListTournaments { get; set; }
+        public int idUserFanatic { get; set; }
         public string Calendar { get; set; }
-       
+        public bool VisibilityVR { get; set; }
+        public bool VisibilityVDT { get; set; }
+        public bool VisibilitySIT { get; set; }
 
         public void loadTournaments()
         {
@@ -32,7 +36,7 @@ namespace PEDS_XWFC.Models
             }
         }
 
-        public void loadCalendar(string idTournament)
+        public void loadCalendar(string idTournament, int idUser)
         {
             this.Tournament.NameTournament = this.ListTournaments[this.ListTournaments.FindIndex(x => x.Value.Equals(idTournament))].Text.ToString();
             Connection connection = new Connection();
@@ -45,6 +49,9 @@ namespace PEDS_XWFC.Models
             dataView = connection.getData(query);
             //IdPartido Selecciones Sede Fecha
 
+            verifyStoT(idTournament, idUser);
+            Debug.WriteLine("Model MainPage - Torneo: " + idTournament  + " userFanatic: " + idUser);
+
             foreach (DataRowView datarow in dataView)
             {
                 string selecciones = datarow["Selecciones"].ToString();
@@ -56,6 +63,30 @@ namespace PEDS_XWFC.Models
                              "<td>" + fecha + "</td > " +
                              "<td> <a href = 'http://localhost:53780/LogIn/LogIn' > Ver narracion </a> </td > " +
                              " </tr>";
+            }
+            
+        }
+
+        /*
+         * Verify subscription to tournament
+         * 
+         */
+        [NonAction]
+        public void verifyStoT(string idTournament, int idUserFanatic)
+        {
+            Connection connection = new Connection();
+            DataView dataView = connection.getData("SELECT IdFanatico FROM worldcupbd.fanatico_torneo WHERE idFanatico = " + idUserFanatic + " AND IdTorneo = " + idTournament);
+            if (dataView.Count == 0)
+            {
+                this.VisibilitySIT = true;
+                this.VisibilityVDT = false;
+                this.VisibilityVR = false;
+            }
+            else
+            {
+                this.VisibilitySIT = false;
+                this.VisibilityVDT = true;
+                this.VisibilityVR = true;
             }
         }
 

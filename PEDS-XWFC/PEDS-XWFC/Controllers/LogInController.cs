@@ -31,15 +31,19 @@ namespace PEDS_XWFC.Controllers
 
             if (user.VerifyUser())
             {
-                return RedirectToAction("MainPage", "MainPage");
+                if (user.VerifyAdmin())
+                {
+                    return RedirectToAction("MainPageAdmin", "MainPageAdmin");
+                }
+                else
+                {
+                    return RedirectToAction("MainPage", "MainPage", new { idFanatic = this.user.IdUserFanatic });
+                }
             }
             else 
             {
                 return View("LogIn");
             }
-
         }
-
-
     }
 }
