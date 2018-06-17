@@ -62,7 +62,7 @@ namespace PEDS_XWFC.Controllers
             string birthDate = Request["UserFanatic.BirthDate"];  //get: yyyy-mm-dd
 
 
-            return RedirectToAction("LogIn", "LogIn");
+            return RedirectToAction("MainPage", "MainPage");
         }
 
 

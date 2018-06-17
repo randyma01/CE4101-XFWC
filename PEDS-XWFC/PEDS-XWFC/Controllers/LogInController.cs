@@ -26,7 +26,6 @@ namespace PEDS_XWFC.Controllers
             string userName = Request["userName"];
             string password = Request["password"];
 
-            
             user.UserName = userName;
             user.Password = password;
 
