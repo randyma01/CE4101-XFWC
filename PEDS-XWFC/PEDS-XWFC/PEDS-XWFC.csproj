@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LiveController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Extra\Connection.cs" />

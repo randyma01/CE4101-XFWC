@@ -48,8 +48,6 @@ namespace PEDS_XWFC.Models
                 "WHERE IdTorneo = '" + idTournament +"' group by Partido.IdPartido";
 
             dataView = connection.getData(query);
-            //IdPartido Selecciones Sede Fecha
-
             verifyStoT(idTournament, idUser);
             //Debug.WriteLine("Model MainPage - Torneo: " + idTournament  + " userFanatic: " + idUser);
 
@@ -69,7 +67,8 @@ namespace PEDS_XWFC.Models
                 }
                 else if (narracion.Equals("en vivo"))
                 {
-                    this.Calendar += "<td> <a href = '#' > En Vivo </a> </td > ";
+                    // --http://localhost:53780/MainPage/Calendar?idFanatic=1 
+                    this.Calendar += "<td> <a href= " + "http://localhost:53780/Live/Live?idGame=" + idPartido + "> En Vivo </a> </td > ";
                 }
                 else if (!narracion.Equals(""))
                 {

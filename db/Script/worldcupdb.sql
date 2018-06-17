@@ -395,3 +395,50 @@ VALUES
 (9,5),
 (10,5);
 
+#----cargar futbolistas mexico(7) y japan(8)  idPartido:4  ----#
+
+# Cargando Japon #
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Japon.txt'
+INTO TABLE Futbolista
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas)
+;
+
+#Japon
+INSERT INTO Futbolista_Seleccion(IdSeleccion,IdFutbolista)
+VALUES
+(8, 90),
+(8, 91),
+(8, 92),
+(8, 93),
+(8, 94),
+(8, 95),
+(8, 96),
+(8, 97),
+(8, 98),
+(8, 99),
+(8, 102);
+
+# Cargando Mexico #
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Mexico.txt'
+INTO TABLE Futbolista
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas)
+;
+
+#Mexico 
+INSERT INTO Futbolista_Seleccion(IdSeleccion,IdFutbolista)
+VALUES
+(7, 17),
+(7, 18),
+(7, 19),
+(7, 20),
+(7, 21),
+(7, 22),
+(7, 23),
+(7, 24),
+(7, 26),
+(7, 28),
+(7, 29);
