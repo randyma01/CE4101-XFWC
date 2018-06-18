@@ -33,6 +33,7 @@ namespace PEDS_XWFC.Controllers
             mySqlConnection.Open();
 
             string insertTable = "INSERT INTO " + table;
+
             if (table.Equals("Usuario"))
             {
                 insertTable += "(Nombreusuario, Apellidousuario, Correo, Username, Clave) " +
@@ -43,6 +44,8 @@ namespace PEDS_XWFC.Controllers
                 }
                 
             }
+
+
             insertTable = insertTable.Remove(insertTable.Length - 1);
             insertTable += ")";
             MySqlCommand sqlCommand = new MySqlCommand(insertTable, mySqlConnection);

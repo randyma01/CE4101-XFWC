@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 
 namespace PEDS_XWFC.Controllers
 {
@@ -12,11 +13,12 @@ namespace PEDS_XWFC.Controllers
     {
         Game game = new Game();
         // GET: Live
-        public ActionResult Live(string idGame)
+        public ActionResult Live(string idGame, string narration)
         {
-            Debug.WriteLine("Live - IdPartido: " + idGame);
+            narration = narration.Replace(" ", "+");
             game.IdGame = Convert.ToInt32(idGame);
             game.loadViewTeams();
+            game.viewNarration(narration);
             return View(game);
         }
     }

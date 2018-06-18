@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 
 namespace PEDS_XWFC.Models
 {
@@ -62,22 +63,25 @@ namespace PEDS_XWFC.Models
                              "<td>" + selecciones + "</td >" +
                              "<td>" + sede + "</td > " +
                              "<td>" + fecha + "</td > ";
-                if (narracion.Equals("")) {
+
+                if (narracion.Equals(""))
+                {
                     this.Calendar += "<td> <a href = '#' >  </a> </td > ";
                 }
                 else if (narracion.Equals("en vivo"))
                 {
-                    // --http://localhost:53780/MainPage/Calendar?idFanatic=1 
                     this.Calendar += "<td> <a href= " + "http://localhost:53780/Live/Live?idGame=" + idPartido + "> En Vivo </a> </td > ";
                 }
                 else if (!narracion.Equals(""))
-                {
-                    this.Calendar += "<td> <a href = '#' > Ver narracion </a> </td > ";
+                { 
+                    narracion = "<?xml version='1.0' encoding='UTF-8'?>" + narracion;
+                    byte[] encode = System.Text.Encoding.UTF8.GetBytes(narracion);
+                    string narracion1 = Convert.ToBase64String(encode);  
+                    this.Calendar += "<td> <a href= " + "http://localhost:53780/Live/Live?idGame=" + idPartido +
+                        "&narration=" + narracion1 + "> Ver Narracion </a> </td>";
                 }
-
                 this.Calendar += " </tr>";
             }
-            
         }
 
         /*

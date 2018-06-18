@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace PEDS_XWFC.Models
 {
@@ -51,6 +54,61 @@ namespace PEDS_XWFC.Models
                              "<td>" + name + "</td >" +
                               " </tr>";
             }
+        }
+        public void viewNarration(string narration)
+        {
+            byte[] encodeBytes = Convert.FromBase64String(narration);
+            string decode = System.Text.Encoding.UTF8.GetString(encodeBytes);
+            this.Narration = loadNarration(decode);
+        }
+
+        public string loadNarration(string narration)
+        {
+            XDocument document = XDocument.Parse(narration);
+            XElement root = document.Root;
+            var xmlAttributeCollection = root.Elements().Attributes();
+            string tableNarration = "";
+            foreach (var ele in root.Elements())
+            {
+                if (!ele.HasElements)
+                {
+                    string elename = "";
+                    tableNarration += "<tr>";
+
+                    elename = ele.Name.ToString();
+
+                    if (ele.HasAttributes)
+                    {
+                        IEnumerable<XAttribute> attribs = ele.Attributes();
+                        foreach (XAttribute attrib in attribs)
+                            elename += Environment.NewLine + attrib.Name.ToString() +
+                              "=" + attrib.Value.ToString();
+                    }
+                    tableNarration += "<td>" + elename + "</td>";
+                    tableNarration +=  "<td>" + ele.Value + "</td>";
+                    tableNarration +=  "</tr>";
+                }
+                else
+                {
+                    string elename = "";
+                    tableNarration += "<tr>";
+
+                    elename = ele.Name.ToString();
+
+                    if (ele.HasAttributes)
+                    {
+                        IEnumerable<XAttribute> attribs = ele.Attributes();
+                        foreach (XAttribute attrib in attribs)
+                            elename += Environment.NewLine + attrib.Name.ToString() + "=" + attrib.Value.ToString();
+                    }
+
+                    tableNarration += "<td>" + elename + "</td>";
+                    tableNarration += "<td>" + loadNarration(ele.ToString()) + "</td>";
+                    tableNarration += "</tr>";
+                }
+            }
+            return tableNarration;
+
         }
     }
 }
