@@ -150,7 +150,7 @@
     <Compile Include="Models\MainPage.cs" />
     <Compile Include="Models\MainPageAdmin.cs" />
     <Compile Include="Models\Power.cs" />
-    <Compile Include="Models\Predictions.cs" />
+    <Compile Include="Models\Prediction.cs" />
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\Teams.cs" />
