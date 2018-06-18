@@ -148,6 +148,7 @@
     <Compile Include="Models\FootballPlayer.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\MainPage.cs" />
+    <Compile Include="Models\MainPageAdmin.cs" />
     <Compile Include="Models\Power.cs" />
     <Compile Include="Models\Predictions.cs" />
     <Compile Include="Models\Sponsor.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Views\DreamTeam\DreamTeam.cshtml" />
     <Content Include="Views\Live\Live.cshtml" />
     <Content Include="Views\NewTournament\NewTournament.cshtml" />
+    <Content Include="Views\MainPage\MainPageAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
