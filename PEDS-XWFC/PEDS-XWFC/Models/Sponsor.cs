@@ -11,4 +11,3 @@ namespace PEDS_XWFC.Models
         public string NameSponsor { get; set; }
     }
 }
-

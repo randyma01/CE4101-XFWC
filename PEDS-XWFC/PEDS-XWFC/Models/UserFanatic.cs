@@ -9,7 +9,7 @@ namespace PEDS_XWFC.Models
     
     public class UserFanatic
     {
-        public int IdUser{ get; set; }
+        public int IdUser { get; set; }
         public int IdCountry { get; set; }
         public int Score { get; set; }
         public string Photo { get; set; }

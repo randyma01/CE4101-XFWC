@@ -120,6 +120,9 @@
   <data name="BirthDate" xml:space="preserve">
     <value>Fecha de nacimiento</value>
   </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>País</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="Photo" xml:space="preserve">
     <value>Foto de perfil</value>
   </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
   <data name="SignUp" xml:space="preserve">
     <value>Crear cuenta</value>
   </data>
@@ -158,5 +164,11 @@
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Nombre de usuario</value>
+  </data>
+  <data name="ViewDreamTeam" xml:space="preserve">
+    <value>Ver Equipo Ideal</value>
+  </data>
+  <data name="ViewRanking" xml:space="preserve">
+    <value>Ver Ranking</value>
   </data>
 </root>

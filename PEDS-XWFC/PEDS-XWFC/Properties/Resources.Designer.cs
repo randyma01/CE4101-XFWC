@@ -70,6 +70,15 @@ namespace PEDS_XWFC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calendario.
+        /// </summary>
+        public static string Calendar {
+            get {
+                return ResourceManager.GetString("Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to País.
         /// </summary>
         public static string Country {
@@ -160,6 +169,15 @@ namespace PEDS_XWFC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registrarse.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Crear cuenta.
         /// </summary>
         public static string SignUp {
@@ -183,6 +201,24 @@ namespace PEDS_XWFC.Properties {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ver Equipo Ideal.
+        /// </summary>
+        public static string ViewDreamTeam {
+            get {
+                return ResourceManager.GetString("ViewDreamTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ver Ranking.
+        /// </summary>
+        public static string ViewRanking {
+            get {
+                return ResourceManager.GetString("ViewRanking", resourceCulture);
             }
         }
     }

@@ -13,23 +13,12 @@ namespace PEDS_XWFC.Controllers
     public class SignUpController : Controller
     {
 
-        NewUser model = new NewUser();
-        Connection connection = new Connection();
+        NewUser newUser = new NewUser();
         // GET: SignUp
         public ActionResult SignUp()
         {
-            
-            DataView dataView;
-            dataView = connection.getData("SELECT * FROM Pais");
-            model.ListCountries = new List<SelectListItem>();
-
-            foreach (DataRowView datarow in dataView)
-            {
-                var newItem = new SelectListItem { Text = datarow["NombrePais"].ToString(), Value = datarow["IdPais"].ToString() };
-                model.ListCountries.Add(newItem);
-            }
-
-            return View(model);
+            newUser.loadCountries();
+            return View(newUser);
         }
 
         [HttpPost]
@@ -62,24 +51,18 @@ namespace PEDS_XWFC.Controllers
         [HttpPost]
         public ActionResult CreateAccount()
         {
-            if (ModelState.IsValid)
-            {
-                string name = Request["firstName"].ToString() + Request["lastName"].ToString();
-                string user = Request["userName"];
-                this.model.User.FirstName = name;
-            }
-            //List<string> values = new List<string>
-            //{   //(NombreUsuario, ApellidoUsuario, Correo, UserName, Clave) 
+            string firstName = Request["User.FirstName"];
+            string lastName = Request["User.LastName"];
+            string userName = Request["User.UserName"];
+            string email = Request["User.Email"];
+            string password = Request["User.Password"];
+            string country = Request["Country"];  //get: IdCountry
+            string description = Request["UserFanatic.PersonalDescription"];
+            string telephone = Request["UserFanatic.TelephoneNumber"];
+            string birthDate = Request["UserFanatic.BirthDate"];  //get: yyyy-mm-dd
 
-            //    {model.User.FirstName},
-            //    {model.User.LastName},
-            //    {model.User.Email},
-            //    {model.User.UserName},
-            //    {model.User.Password}
-            //};
-            //connection.insertData("Usuario", values);
-            
-            return RedirectToAction("LogIn", "LogIn");
+
+            return RedirectToAction("MainPage", "MainPage");
         }
 
 

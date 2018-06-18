@@ -26,21 +26,24 @@ namespace PEDS_XWFC.Controllers
             string userName = Request["userName"];
             string password = Request["password"];
 
-            
             user.UserName = userName;
             user.Password = password;
 
             if (user.VerifyUser())
             {
-                return RedirectToAction("MainPage", "MainPage");
+                if (user.VerifyAdmin())
+                {
+                    return RedirectToAction("MainPageAdmin", "MainPageAdmin");
+                }
+                else
+                {
+                    return RedirectToAction("MainPage", "MainPage", new { idFanatic = this.user.IdUserFanatic });
+                }
             }
             else 
             {
                 return View("LogIn");
             }
-
         }
-
-
     }
 }

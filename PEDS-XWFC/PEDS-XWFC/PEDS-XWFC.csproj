@@ -135,6 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LiveController.cs" />
+    <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
     <Compile Include="Extra\Connection.cs" />
     <Compile Include="Controllers\LogInController.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Models\ChampionMode.cs" />
     <Compile Include="Models\FootballPlayer.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\MainPage.cs" />
     <Compile Include="Models\Power.cs" />
     <Compile Include="Models\Predictions.cs" />
     <Compile Include="Models\Sponsor.cs" />

@@ -8,95 +8,73 @@
 <h2 class="container"> @PEDS_XWFC.Properties.Resources.CreateAccount</h2>
 
 
-<form class="container">
-    @using (Html.BeginForm("CreateAccount", "SignUp", FormMethod.Post))
-    {
-
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.FirstName)
-                @Html.TextBoxFor(m => m.User.FirstName, new { @class = "form-control", id = "firstName" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.LastName)
-                @Html.TextBoxFor(m => m.User.LastName, new { @class = "form-control", id = "lastName" })
-
-            </div>
+<form class="container"> 
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.FirstName)
+            @Html.TextBoxFor(m => m.User.FirstName, new { @class = "form-control" })
         </div>
-
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.UserName)
-                @Html.TextBoxFor(m => m.User.UserName, new { @class = "form-control", id = "userName" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Email)
-                @Html.TextBoxFor(m => m.User.Email, new { @class = "form-control" })
-            </div>
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.LastName)
+            @Html.TextBoxFor(m => m.User.LastName, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Password)
-                @Html.PasswordFor(m => m.User.Password, new { @class = "form-control" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.Country)
-                @Html.DropDownListFor(m => m.Country, Model.ListCountries, htmlAttributes: new { @class = "form-control", id = "Country" })
-            </div>
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.UserName)
+            @Html.TextBoxFor(m => m.User.UserName, new { @class = "form-control" })
         </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.PersonalDescription)
-
-                @Html.TextBoxFor(m => m.UserFanatic.PersonalDescription, new { @class = "form-control" })
-            </div>
-
-            <div class="col-sm-3 col-md-6 col-lg-4">
-                @Html.Label(PEDS_XWFC.Properties.Resources.TelephoneNumber)
-                @Html.TextBoxFor(m => m.UserFanatic.TelephoneNumber, new { @class = "form-control" })
-            </div>
-
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.Email)
+            @Html.TextBoxFor(m => m.User.Email, new { @class = "form-control" })
         </div>
+    </div>
 
-        <button type="submit" class="btn-success" formaction=@Url.Action("CreateAccount") formmethod="post">Save</button>
-    }
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.Password)
+            @Html.PasswordFor(m => m.User.Password, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.Country)
+            @Html.DropDownListFor(m => m.Country, Model.ListCountries, htmlAttributes: new { @class = "form-control", id = "Country" })
+        </div>
+    </div>
 
-
-
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.PersonalDescription)
+            @Html.TextBoxFor(m => m.UserFanatic.PersonalDescription, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-3 col-md-6 col-lg-4">
+            @Html.Label(PEDS_XWFC.Properties.Resources.TelephoneNumber)
+            @Html.TextBoxFor(m => m.UserFanatic.TelephoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-3 col-md-6 col-lg-4">
             @Html.Label(PEDS_XWFC.Properties.Resources.Photo + " (*)")
             <div class="form-group">
-                @using (Html.BeginForm("FileUpload", "SignUp", FormMethod.Post,
-                    new { enctype = "multipart/form-data" }))
-                {<img id="profilePhoto" src="~/Content/Images/userDefault.png" width="150" height="150" />
-                    <label for="filePhoto-input">
-                        <span class="glyphicon glyphicon-cloud-upload" style="font-size:60px;"></span>
-                    </label>
-                    <input id="filePhoto-input" type="file" style="display:none" />
-                }
+                <img id="profilePhoto" src="~/Content/Images/userDefault.png" width="150" height="150" />
+                <label for="filePhoto-input">
+                    <span class="glyphicon glyphicon-cloud-upload" style="font-size:60px;"></span>
+                </label>
+                <input id="filePhoto-input" type="file" style="display:none" />
+                @* @using (Html.BeginForm("FileUpload", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data" })) {}*@
             </div>
         </div>
-
-
         <div class="col-sm-3 col-md-6 col-lg-4">
-
-
             @Html.Label(PEDS_XWFC.Properties.Resources.BirthDate + " (*)")
-            @Html.TextBoxFor(m => m.UserFanatic.BirthDate, new { type = "date" })
-            <span class="glyphicon glyphicon-calendar"></span>
+            @Html.TextBoxFor(m => m.UserFanatic.BirthDate, new { @class ="form-control" ,@type = "date" })
         </div>
     </div>
 
-
-    @*
-        @using (Html.BeginForm("CreateAccount", "SignUp", FormMethod.Post))
-        {}
-    *@
+    <div class="row">
+        <div class="col-sm-4 col-md-offset-4 col-lg-4">
+            <button type="submit" class="btn btn-primary" formaction=@Url.Action("CreateAccount") formmethod="post">@PEDS_XWFC.Properties.Resources.CreateAccount</button>
+        </div>
+    </div>
 </form>
 

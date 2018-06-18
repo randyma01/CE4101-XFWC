@@ -18,7 +18,7 @@ namespace PEDS_XWFC.Models
         public List<Power> ListPowers { get; set; }
         public List<Game> ListGames { get; set; }
         public List<Teams> ListTeams { get; set; }
-
     }
 }
+
 
