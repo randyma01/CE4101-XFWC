@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PEDS_XWFC.Models
 {
-    public class Teams
+    public class Team
     {
         public int IdTeam { get; set; }
         public string NameTeam { get; set; }

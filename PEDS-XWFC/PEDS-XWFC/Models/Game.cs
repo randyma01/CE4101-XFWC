@@ -19,8 +19,8 @@ namespace PEDS_XWFC.Models
         public string Result { get; set; }
         public string Place { get; set; }
 
-        public Teams Team1 { get; set; }
-        public Teams Team2 { get; set; }
+        public Team Team1 { get; set; }
+        public Team Team2 { get; set; }
 
         public string viewTeam1 { get; set; }
         public string viewTeam2 { get; set; }

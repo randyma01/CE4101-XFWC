@@ -17,7 +17,7 @@ namespace PEDS_XWFC.Models
         public string Country { get; set; }
         public List<Power> ListPowers { get; set; }
         public List<Game> ListGames { get; set; }
-        public List<Teams> ListTeams { get; set; }
+        public List<Team> ListTeams { get; set; }
     }
 }
 

@@ -14,13 +14,32 @@ namespace PEDS_XWFC.Controllers
         // GET: MainPageAdmin
         public ActionResult MainPageAdmin()
         {
-            return View();
+            mainPage.loadTournaments();
+            return View(mainPage);
         }
 
+        [HttpPost]
+        public ActionResult ViewCalendar()
+        {
+            mainPage.loadTournaments();
+            string idTournament = Request["Tournament.NameTournament"];
+            
+            mainPage.loadCalendar(idTournament);
+
+            return View("MainPageAdmin", mainPage);
+        }
 
         public ActionResult NewTournament()
         {
             mainPage.loadData();
+            return View("NewTournament", mainPage);
+        }
+
+        [HttpPost]
+        public ActionResult AddTeam()
+        {
+            string idTeam = Request["Team"];
+            mainPage.addNewTeamToTournament(idTeam);
             return View("NewTournament", mainPage);
         }
     }

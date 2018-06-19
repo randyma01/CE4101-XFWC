@@ -90,7 +90,7 @@ IdPais INT ,
 Posicion VARCHAR(30),
 NombreFutbolista VARCHAR(60),
 FechaNacimiento DATE,
-NombreEquipo VARCHAR(30),
+NombreEquipo VARCHAR(300),
 Altura  INT,
 Peso    INT,
 Precio INT,
@@ -421,11 +421,18 @@ VALUES
 (8, 102);
 
 # Cargando Mexico #
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Mexico.txt'
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/loadFutbolistas.csv'
 INTO TABLE Futbolista
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 (Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas)
+;
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/estadisticas.txt'
+INTO TABLE Estadisticas
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+(JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecuperacionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
 ;
 
 #Mexico 

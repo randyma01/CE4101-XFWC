@@ -32,5 +32,12 @@ namespace PEDS_XWFC.Controllers
 
             return View("MainPage", main);
         }
+
+        [HttpPost]
+        public ActionResult Subscription(int idFanatic)
+        {
+            string idTournament = Request["Tournament.NameTournament"];
+            return View();
+        }
     }
 }
