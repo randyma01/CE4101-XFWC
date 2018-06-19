@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PEDS_XWFC.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +10,7 @@ namespace PEDS_XWFC.Controllers
 {
     public class MainPageAdminController : Controller
     {
+        MainPageAdmin mainPage = new MainPageAdmin();
         // GET: MainPageAdmin
         public ActionResult MainPageAdmin()
         {
@@ -17,7 +20,9 @@ namespace PEDS_XWFC.Controllers
 
         public ActionResult NewTournament()
         {
-            return View("NewTournament");
+            mainPage.loadData();
+            Debug.WriteLine("cargar Listas");
+            return View("NewTournament", mainPage);
         }
     }
 }

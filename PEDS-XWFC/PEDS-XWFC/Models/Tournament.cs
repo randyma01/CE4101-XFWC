@@ -9,7 +9,7 @@ namespace PEDS_XWFC.Models
 {
     public class Tournament
     {
-        public Sponsor MainSponsor { get; set; }
+        public string MainSponsor { get; set; }
         public int IdTournament{ get; set; }
         public string NameTournament { get; set; }
         public string StartDate { get; set; }

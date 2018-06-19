@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PEDS_XWFC.Models.MainPageAdmin
+@{
     Layout = "~/Views/Templates/HomeLayout.cshtml";
     ViewBag.Title = "New Tournament";
 }
@@ -6,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,11 +19,18 @@
           top: 20px;
           z-index: 9999 !important;
       }
+      .table-wrapper {
+          display: block;
+          max-height: 300px;
+          overflow-y: auto;
+          -ms-overflow-style: -ms-autohiding-scrollbar;
+      }
       #section1 {padding-top:50px;height:500px;}
       #section2 {padding-top:50px;height:500px;}
       #section3 {padding-top:50px;height:500px;}
       #section4 {padding-top:50px;height:500px;}
       #section5 {padding-top:50px;height:500px;}
+
     </style>
 </head>
 <body data-spy="scroll"  data-offset="15">
@@ -38,21 +47,116 @@
                 <div id="section1">
                     <h1>Nuevo Torneo</h1>
                     <hr />
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <div class="row">
+                        <div class="form-group">
+                            @Html.Label("Nombre torneo")
+                            @Html.TextBoxFor(m => m.Tournament.NameTournament, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-6 col-lg-4">
+                            @Html.Label("Pais sede")
+                            @Html.DropDownListFor(m => m.Tournament.Country, Model.ListCountries, htmlAttributes: new { @class = "form-control", id = "Country" })
+                        </div>
+                        <div class="col-sm-3 col-md-6 col-lg-4">
+                            @Html.Label("Patrocinador")
+                            @Html.DropDownListFor(m => m.Tournament.MainSponsor, Model.ListSoponsors, htmlAttributes: new { @class = "form-control", id = "Sponsor" })
+                        </div>
+                    </div>
+                    
+                    <div class="row" style="margin-top:20px">
+                        
+                        <div class="col-sm-3 col-md-6 col-lg-4">
+                            @Html.Label("Fecha de inicio")
+                            @Html.TextBoxFor(m => m.Tournament.StartDate, new { @class = "form-control", @type = "date" })
+                        </div>
+
+                        <div class="col-sm-3 col-md-6 col-lg-4">
+                            @Html.Label("Fecha final")
+                            @Html.TextBoxFor(m => m.Tournament.FinishDate, new { @class = "form-control", @type = "date" })
+                        </div>
+                    </div>
                 </div>
-                <div id="section2">
+                <div id="section2"> 
                     <h1>Agregar equipos</h1>
                     <hr />
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+                    <div class="table-wrapper">
+                        <table class="table table-bordered table-responsive-md">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="pr-md-3 pr-5">
+                                        <input class="form-check-input filled-in" type="checkbox" id="checkbox124">
+                                        <label class="form-check-label" for="checkbox124" class="label-table"></label>
+                                    </th>
+
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mdsso</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mdso</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input" type="checkbox" id="checkbox2">
+                                        <label class="form-check-label" for="checkbox2" class="label-table"></label>
+                                    </th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>fat</td>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input" type="checkbox" id="checkbox3">
+                                        <label class="form-check-label" for="checkbox3" class="label-table"></label>
+                                    </th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>twitter</td>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>twitter</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input" type="checkbox" id="checkbox4">
+                                        <label class="form-check-label" for="checkbox4" class="label-table"></label>
+                                    </th>
+                                    <td>Paul</td>
+                                    <td>Topolski</td>
+                                    <td>P_Topolski</td>
+                                    <td>Paul</td>
+                                    <td>Topolski</td>
+                                    <td>P_Topolski</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input class="form-check-input" type="checkbox" id="checkbox5">
+                                        <label class="form-check-label" for="checkbox5" class="label-table"></label>
+                                    </th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>twitter</td>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
                 <div id="section3">
                     <h1>Agregar patrocinadores</h1>
                     <hr />
-                    <p>Try to scroll this section and look at the navigation list while scrolling!</p>
                 </div>
             </div>
         </div>
     </div>
+    <input type="number"/>
 
 </body>
 </html>
