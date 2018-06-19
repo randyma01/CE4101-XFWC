@@ -21,7 +21,6 @@ namespace PEDS_XWFC.Controllers
         public ActionResult NewTournament()
         {
             mainPage.loadData();
-            Debug.WriteLine("cargar Listas");
             return View("NewTournament", mainPage);
         }
     }

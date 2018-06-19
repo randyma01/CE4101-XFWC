@@ -59,9 +59,10 @@
             <div class="form-group">
                 <img id="profilePhoto" src="~/Content/Images/userDefault.png" width="150" height="150" />
                 <label for="filePhoto-input">
-                    <span class="glyphicon glyphicon-cloud-upload" style="font-size:60px;"></span>
+                    <span class="glyphicon glyphicon-cloud-upload" onmouseover="" style="cursor:pointer;font-size:60px;"></span>
                 </label>
-                <input id="filePhoto-input" type="file" style="display:none" />
+                <input id="filePhoto-input" onchange="readURL(this);" type="file" style="display:none" accept=".gif, .jpg, .png" />
+
                 @* @using (Html.BeginForm("FileUpload", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data" })) {}*@
             </div>
         </div>
@@ -77,4 +78,5 @@
         </div>
     </div>
 </form>
+
 

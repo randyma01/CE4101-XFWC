@@ -14,6 +14,7 @@ namespace PEDS_XWFC.Models
         public List<SelectListItem> ListCountries { get; set; }
         public List<SelectListItem> ListSoponsors { get; set; }
         public List<SelectListItem> ListTeams { get; set; }
+        public List<int> ListTeamsForTournament { get; set; }
 
         public void loadData()
         {

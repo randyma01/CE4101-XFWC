@@ -44,6 +44,15 @@ namespace PEDS_XWFC.Controllers
                 }
                 
             }
+            if (table.Equals("Fanatico"))
+            {
+                insertTable += "(Telefono, Puntos, IdPais, IdUsuario, Descripcion, Foto) " +
+                    "VALUES (";
+                foreach (var value in values)
+                {
+                    insertTable += "'" + value + "'" + ",";
+                }
+            }
 
 
             insertTable = insertTable.Remove(insertTable.Length - 1);
