@@ -244,7 +244,10 @@ VALUES
 # Cargando usuario fanatico de prueba #
 INSERT INTO Fanatico(Telefono, Puntos, IdPais, IdUsuario, Descripcion, Foto)
 VALUES
-("41400-9876", 0, 41, 1,"Me gusta el futbol.", "no tengo foto");
+("41400-9876", 0, 41, 1,"Me gusta el futbol.", "no tengo foto"),
+("41400-9876", 0, 41, 2,"Me no gusta el futbol.", "no tengo foto"),
+("41400-9876", 0, 41, 3,"Me gusta mucho el futbol.", "no tengo foto");
+
 
 # Cargando usuario fanatico desactivado #
 INSERT INTO Usuario_Desactivado(IdUsuario)
@@ -256,17 +259,15 @@ VALUES(4);
 
 #---------------------------------------------------------------------------------------
 
-# Cargando patrocinadores 1 #
+# Cargando patrocinadores  #
 INSERT INTO Patrocinador (NombrePatrocinador)
-VALUES ("Dos Pinos");
+VALUES 
+("Nike"),
+("Adidas"),
+("Gatorade"),
+("Visa"),
+("Coca-Cola");
 
-# Cargando patrocinador 2 #
-INSERT INTO Patrocinador (NombrePatrocinador)
-VALUES ("Bimbo");
-
-# Cargando patrocinador 3 #
-INSERT INTO Patrocinador(NombrePatrocinador) 
-VALUES ("X-Coca-Cola");
 
 #---------------------------------------------------------------------------------------
 
@@ -281,12 +282,10 @@ VALUES ("Mexico 2026", "2026-05-1 00:34:34", "2026-06-29 22:34:34", 114, 2);
 # Cargando selecciones al torneo 1 #
 INSERT INTO Seleccion(NombreSeleccion, IdPais)
 VALUES
-("Iceland", 75),
-("Croatia",42),
-("Denmark",46),
-("Sweden", 169),
-("Australia",9),
-("Belgium", 17);
+("Costa Rica", 41),
+("Alemania",64),
+("Argetina",7),
+("Espana", 164);
 
 # Cargando asociaciones de las selecciones al torneo 1 #
 INSERT INTO Seleccion_Torneo(IdSeleccion, IdTorneo)
@@ -294,9 +293,10 @@ VALUES
 (1,1),
 (2,1),
 (3,1),
-(4,1),
-(5,2),
-(6,2); 
+(4,1);
+
+##====================================================
+##====================================================
 
 # Cargando partido 1:  torneo 1 #
 INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
@@ -336,7 +336,7 @@ VALUES
 (0,0,0,0,0,0,0,0,0,0,0,0,0);
 
 # Cargando jugador Kante #
-INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas) 
+INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, ActIivo, IdEstadisticas) 
 VALUES
 (56017835,60,"MF","KANTE Ngolo",'1991-03-29',"Chelsea FC (ENG)",168,70,10,True,1);
 
@@ -375,19 +375,4 @@ VALUES
 
 /*------------ Queries --------------*/
 
-SELECT 
-partido.IdPartido, seleccion.NombreSeleccion, partido.Sede, partido.Fecha
-FROM  
-partido INNER JOIN
-         seleccion_partido ON partido.IdPartido = seleccion_partido.IdPartido 
-         INNER JOIN
-         seleccion ON seleccion_partido.IdSeleccion = seleccion.IdSeleccion WHERE (IdTorneo = 1);
-         
-         
-         
 SELECT * FROM Pais;
-SELECT * FROM Seleccion;
-SELECT * FROM Seleccion_Torneo;
-
-         
-         

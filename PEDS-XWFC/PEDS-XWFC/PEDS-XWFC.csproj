@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChampionModeController.cs" />
     <Compile Include="Controllers\LiveController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Controllers\TournamentController.cs" />
@@ -191,7 +192,6 @@
     <Content Include="Views\DreamTeam\DreamTeam.cshtml" />
     <Content Include="Views\Live\Live.cshtml" />
     <Content Include="Views\NewTournament\NewTournament.cshtml" />
-    <Content Include="Views\MainPage\MainPageAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
