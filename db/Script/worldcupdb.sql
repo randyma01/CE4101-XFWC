@@ -85,11 +85,11 @@ PRIMARY KEY(IdEstadisticas)
 
 CREATE TABLE Futbolista(
 IdFutbolista INT NOT NULL AUTO_INCREMENT, 
-Pasaporte INT,
+Pasaporte VARCHAR(100),
 IdPais INT ,
 Posicion VARCHAR(30),
 NombreFutbolista VARCHAR(60),
-FechaNacimiento DATE,
+FechaNacimiento DATE ,
 NombreEquipo VARCHAR(30),
 Altura  INT,
 Peso    INT,
@@ -295,25 +295,21 @@ VALUES
 (3,1),
 (4,1);
 
-##====================================================
-##====================================================
-
 # Cargando partido 1:  torneo 1 #
 INSERT INTO Partido(IdTorneo, Narracion, Fecha, Sede, Resultado)
 VALUES
-(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Fello Meza", "4-4"),
+(1, " sin narracion todavia " ,"2026-05-1 00:34:34", "Estadio Rojo", "4-4"),
 (1, " sin narracion todavia " ,"2019-03-6 004:24:43", "Estadio Verde", "1-2"),
-(2, " sin narracion todavia " ,"2005-02-16 04:34:34", "Estadio Azul", "3-2");
+(1, " sin narracion todavia " ,"2005-02-16 04:34:34", "Estadio Azul", "3-2"),
+(1, " sin narracion todavia " ,"2005-02-16 04:34:34", "Estadio Morado", "1-0");
 
 # Cargando selecciones en el partido 1: torneo 1 #
 INSERT INTO Seleccion_Partido(IdSeleccion, IdPartido)
 VALUES
-#(1,1),
-#(2,1),
-(3,2),
-(4,2),
-(5,3),
-(6,3);
+(1,1),
+(2,2),
+(3,1),
+(4,2);
 
 #---------------------------------------------------------------------------------------
 
@@ -329,17 +325,32 @@ VALUES
 
 #---------------------------------------------------------------------------------------
 
-# Cargando estadisiticas de Kante #
-INSERT INTO Estadisticas
-(JuegosGanados,JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados,Goles, TirosAMarco, Asistencias, RecuperacionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados)
-VALUES
-(0,0,0,0,0,0,0,0,0,0,0,0,0);
+# Cargando estadisiticas de los jugadores #
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/estadisticas_vacias.txt'
+INTO TABLE worldcupbd.estadisticas
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+(JuegosGanados, JuegosPerdidos, JuegosEmpatados, TotalMinutosJugados, Goles, TirosAMarco, Asistencias, RecuperacionBalones, TarjetasAmarillas, TarjetasRojas, PenalesDetenidos, PenalesCometidos, RematesSalvados);
 
-# Cargando jugador Kante #
-INSERT INTO Futbolista(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, ActIivo, IdEstadisticas) 
-VALUES
-(56017835,60,"MF","KANTE Ngolo",'1991-03-29',"Chelsea FC (ENG)",168,70,10,True,1);
 
+# Cargando jugador  #
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Mexico.txt'
+INTO TABLE worldcupbd.futbolista
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas); 
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Japon.txt'
+INTO TABLE worldcupbd.futbolista
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas);
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Data/Costa Rica.txt'
+INTO TABLE worldcupbd.futbolista
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+(Pasaporte, IdPais, Posicion, NombreFutbolista, FechaNacimiento, NombreEquipo, Altura, Peso, Precio, Activo, IdEstadisticas);
 #---------------------------------------------------------------------------------------
 
 # Cargando futbolista a una seleccion #
@@ -372,7 +383,5 @@ VALUES
 
 #---------------------------------------------------------------------------------------
 
-
-/*------------ Queries --------------*/
-
-SELECT * FROM Pais;
+	
+                
